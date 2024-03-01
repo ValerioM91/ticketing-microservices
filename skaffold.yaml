@@ -15,14 +15,6 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: docker.io/valeriom91/client
-      context: client
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: '**/*.ts'
-            dest: .
     - image: docker.io/valeriom91/tickets
       context: tickets
       docker:
@@ -30,4 +22,12 @@ build:
       sync:
         manual:
           - src: 'src/**/*.ts'
+            dest: .
+    - image: docker.io/valeriom91/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.ts'
             dest: .

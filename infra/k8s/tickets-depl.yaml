@@ -16,22 +16,19 @@ spec:
         - name: tickets
           image: docker.io/valeriom91/tickets
           env:
+            - name: MONGO_URI
+              value: 'mongodb://tickets-mongo-srv:27017/tickets'
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
-            - name: MONGO_URI
-              value: 'mongodb://tickets-mongo-srv:27017/tickets'
-          ports:
-            - containerPort: 3000
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: tickets-srv
 spec:
-  type: ClusterIP
   selector:
     app: tickets
   ports:
