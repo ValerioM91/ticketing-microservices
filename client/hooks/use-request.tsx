@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { useState } from 'react'
 
+// TODO - remove or update with correct types
+
 const useRequest = ({
   url,
   method,
