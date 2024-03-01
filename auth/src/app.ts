@@ -4,8 +4,7 @@ import { currentUserRouter } from './routes/current-user'
 import { signInRouter } from './routes/signin'
 import { signOutRouter } from './routes/signout'
 import { signUpRouter } from './routes/signup'
-import { errorHandler } from './middleware/error-handler'
-import { NotFoundError } from './errors/not-found-error'
+import { errorHandler, NotFoundError } from '@valeriom91-org/common'
 import cookieSession from 'cookie-session'
 
 const app = express()

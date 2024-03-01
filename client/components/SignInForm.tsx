@@ -24,7 +24,7 @@ const formSchema = z.object({
   password: z.string().min(4).max(50),
 })
 
-export function SignUpForm() {
+export function SignInForm() {
   const [errors, setErrors] = useState<CustomError[]>([])
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -40,8 +40,7 @@ export function SignUpForm() {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     try {
-      const response = await axios.post('/api/users/signup', values)
-      console.log(response.data)
+      const response = await axios.post('/api/users/signin', values)
       Router.push('/')
     } catch (err) {
       setErrors((err as { response: { data: { errors: CustomError[] } } }).response.data.errors)
