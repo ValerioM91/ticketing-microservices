@@ -7,6 +7,8 @@ import {
   validateRequest,
 } from '@valeriom91-org/common'
 import { Ticket } from '../models/ticket'
+import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher'
+import { natsWrapper } from '../nats-wrapper'
 
 const router = express.Router()
 
@@ -44,6 +46,13 @@ router.patch(
     }
 
     await ticket.save()
+
+    await new TicketUpdatedPublisher(natsWrapper.client).publish({
+      id: ticket.id,
+      price: ticket.price,
+      title: ticket.title,
+      userId: ticket.userId,
+    })
 
     res.status(200).send(ticket)
   }

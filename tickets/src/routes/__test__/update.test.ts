@@ -1,7 +1,7 @@
 import supertest from 'supertest'
 import { app } from '../../app'
-import { Ticket } from '../../models/ticket'
 import mongoose from 'mongoose'
+import { natsWrapper } from '../../nats-wrapper'
 
 const createTicket = async () => {
   const title = 'title'
@@ -83,4 +83,23 @@ it('updates a ticket with valid inputs', async () => {
 
   expect(response.body.title).toEqual('test-new')
   expect(response.body.price).toEqual(10)
+})
+
+it('publishes an event', async () => {
+  const cookie = global.signin()
+
+  const {
+    body: { id },
+  } = await supertest(app)
+    .post('/api/tickets')
+    .set('Cookie', cookie)
+    .send({ title: 'test', price: 123 })
+
+  await supertest(app)
+    .patch(`/api/tickets/${id}`)
+    .set('Cookie', cookie)
+    .send({ title: 'test-new', price: 10 })
+    .expect(200)
+
+  expect(natsWrapper.client.publish).toHaveBeenCalled()
 })
