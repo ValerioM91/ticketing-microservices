@@ -15,8 +15,8 @@ dependencies:
     specifier: ^9.0.5
     version: 9.0.5
   '@valeriom91-org/common':
-    specifier: ^1.0.5
-    version: 1.0.5
+    specifier: ^1.0.6
+    version: 1.0.6
   cookie-session:
     specifier: ^2.1.0
     version: 2.1.0
@@ -927,8 +927,8 @@ packages:
       '@types/yargs-parser': 21.0.3
     dev: true
 
-  /@valeriom91-org/common@1.0.5:
-    resolution: {integrity: sha512-WFwT/qx3/kv1E1cgW2LFk9wL1Khvx3339RpYpv/xvoQejxk89/2lIYnCCITxvWBds3bd6gyZoJVcffbvJsJ+Cg==}
+  /@valeriom91-org/common@1.0.6:
+    resolution: {integrity: sha512-3Ufel8qVzbmh8HuDHG4BLlwLK9YD0dR0b7wtjV0ccPq04QuhiUl4oYFXSQExGBWOcPl+eup0BieoVmwF+4O9Sw==}
     dependencies:
       cookie-session: 2.1.0
       express: 4.18.3
