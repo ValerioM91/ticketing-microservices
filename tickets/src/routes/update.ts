@@ -49,6 +49,7 @@ router.patch(
 
     await new TicketUpdatedPublisher(natsWrapper.client).publish({
       id: ticket.id,
+      version: ticket.version,
       price: ticket.price,
       title: ticket.title,
       userId: ticket.userId,

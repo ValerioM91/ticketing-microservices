@@ -15,8 +15,8 @@ dependencies:
     specifier: ^9.0.5
     version: 9.0.5
   '@valeriom91-org/common':
-    specifier: ^1.0.4
-    version: 1.0.4
+    specifier: ^1.0.9
+    version: 1.0.9
   cookie-session:
     specifier: ^2.1.0
     version: 2.1.0
@@ -35,6 +35,9 @@ dependencies:
   mongoose:
     specifier: ^8.0.3
     version: 8.0.3
+  mongoose-update-if-current:
+    specifier: ^1.4.0
+    version: 1.4.0(mongoose@8.0.3)
   node-nats-streaming:
     specifier: ^0.3.2
     version: 0.3.2
@@ -927,8 +930,8 @@ packages:
       '@types/yargs-parser': 21.0.3
     dev: true
 
-  /@valeriom91-org/common@1.0.4:
-    resolution: {integrity: sha512-tFkrljIi43NnZEknJcz0Wv9sVqjmqarJ7enAJ84hBG4br+gAxcymOKGVIEguKFnfgVqnMRI2HAjSZGdLHX3HTg==}
+  /@valeriom91-org/common@1.0.9:
+    resolution: {integrity: sha512-oRTKZQzbJsO7PXXzBG0p/gul/Q0qpYw4KJLXydmeofRTlCEggYunaGJC7nwRM/GoQ3A9xtFvH92yT3/KcvzKGA==}
     dependencies:
       cookie-session: 2.1.0
       express: 4.18.3
@@ -1395,6 +1398,11 @@ packages:
     dependencies:
       depd: 2.0.0
       keygrip: 1.1.0
+    dev: false
+
+  /core-js@3.36.0:
+    resolution: {integrity: sha512-mt7+TUBbTFg5+GngsAxeKBTl5/VS0guFeJacYge9OmHb+m058UwwIm41SE9T4Den7ClatV57B6TYTuJ0CX1MAw==}
+    requiresBuild: true
     dev: false
 
   /create-jest@29.7.0(@types/node@20.11.24):
@@ -2897,6 +2905,18 @@ packages:
       mongodb-connection-string-url: 2.6.0
     dev: false
 
+  /mongoose-update-if-current@1.4.0(mongoose@8.0.3):
+    resolution: {integrity: sha512-Rau2nvdiLExqXrSOwMMgDYQgf/fwTJQpPidTcT7C9UMQ282gTKXjDuh5vrjVvVQpfuvkiPis0tGHdXffaD54bg==}
+    engines: {node: '>=8.0.0'}
+    peerDependencies:
+      mongoose: '>=5.0.0'
+    dependencies:
+      core-js: 3.36.0
+      kareem: 2.5.1
+      mongoose: 8.0.3
+      regenerator-runtime: 0.13.11
+    dev: false
+
   /mongoose@8.0.3:
     resolution: {integrity: sha512-LJRT0yP4TW14HT4r2RkxqyvoTylMSzWpl5QOeVHTnRggCLQSpkoBdgbUtORFq/mSL2o9cLCPJz+6uzFj25qbHw==}
     engines: {node: '>=16.20.1'}
@@ -3195,6 +3215,10 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+    dev: false
+
+  /regenerator-runtime@0.13.11:
+    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
     dev: false
 
   /require-directory@2.1.1:
