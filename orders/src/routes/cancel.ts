@@ -6,6 +6,8 @@ import {
   requiredAuth,
 } from '@valeriom91-org/common'
 import { Order } from '../models/order'
+import { OrderCancelledPublisher } from '../publishers/order-cancelled-publisher'
+import { natsWrapper } from '../nats-wrapper'
 
 const router = express.Router()
 
@@ -13,7 +15,7 @@ router.patch('/api/orders/:orderId', requiredAuth, async (req: Request, res: Res
   const userId = req.currentUser!.id
   const { orderId } = req.params
 
-  const order = await Order.findById(orderId)
+  const order = await Order.findById(orderId).populate('ticket')
 
   if (!order) {
     throw new NotFoundError('Order not found')
@@ -27,6 +29,12 @@ router.patch('/api/orders/:orderId', requiredAuth, async (req: Request, res: Res
   await order.save()
 
   // Publish an event saying this was cancelled!
+  await new OrderCancelledPublisher(natsWrapper.client).publish({
+    id: order.id,
+    ticket: {
+      id: order.ticket.id,
+    },
+  })
 
   res.status(200).send(order)
 })
