@@ -2,6 +2,7 @@ import supertest from 'supertest'
 import { app } from '../../app'
 import mongoose from 'mongoose'
 import { natsWrapper } from '../../nats-wrapper'
+import { Ticket } from '../../models/ticket'
 
 const createTicket = async () => {
   const title = 'title'
@@ -102,4 +103,25 @@ it('publishes an event', async () => {
     .expect(200)
 
   expect(natsWrapper.client.publish).toHaveBeenCalled()
+})
+
+it('rejects updates if the ticket is reserved', async () => {
+  const cookie = global.signin()
+
+  const {
+    body: { id },
+  } = await supertest(app)
+    .post('/api/tickets')
+    .set('Cookie', cookie)
+    .send({ title: 'test', price: 123 })
+
+  const ticket = await Ticket.findById(id)
+  ticket!.set({ orderId: new mongoose.Types.ObjectId().toHexString() })
+  await ticket!.save()
+
+  await supertest(app)
+    .patch(`/api/tickets/${id}`)
+    .set('Cookie', cookie)
+    .send({ title: 'test-new', price: 10 })
+    .expect(400)
 })

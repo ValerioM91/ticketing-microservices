@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express'
 import { body } from 'express-validator'
 import {
+  BadRequestError,
   NotAuthorizedError,
   NotFoundError,
   requiredAuth,
@@ -29,6 +30,10 @@ router.patch(
 
     if (ticket.userId !== req.currentUser!.id) {
       throw new NotAuthorizedError()
+    }
+
+    if (ticket.orderId) {
+      throw new BadRequestError('Cannot edit a reserved ticket')
     }
 
     const { title, price } = req.body
