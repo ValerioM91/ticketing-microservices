@@ -1,4 +1,4 @@
-name: tests
+name: tests-orders
 
 on: pull_request
 
@@ -13,4 +13,4 @@ jobs:
         with:
           version: 8 # Optional: specify a pnpm version
 
-      - run: cd auth && pnpm install && pnpm test:ci
+      - run: cd orders && pnpm install && pnpm test:ci
