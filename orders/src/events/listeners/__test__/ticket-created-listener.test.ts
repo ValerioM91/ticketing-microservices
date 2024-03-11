@@ -1,9 +1,9 @@
 import { TicketCreatedEvent } from '@valeriom91-org/common'
-import { natsWrapper } from '../../nats-wrapper'
+import { natsWrapper } from '../../../nats-wrapper'
 import { TicketCreatedListener } from '../ticket-created-listener'
 import mongoose from 'mongoose'
 import { Message } from 'node-nats-streaming'
-import { Ticket } from '../../models/ticket'
+import { Ticket } from '../../../models/ticket'
 
 const setup = async () => {
   // create an instance of the listener

@@ -6,7 +6,7 @@ import {
   requiredAuth,
 } from '@valeriom91-org/common'
 import { Order } from '../models/order'
-import { OrderCancelledPublisher } from '../publishers/order-cancelled-publisher'
+import { OrderCancelledPublisher } from '../events/publishers/order-cancelled-publisher'
 import { natsWrapper } from '../nats-wrapper'
 
 const router = express.Router()

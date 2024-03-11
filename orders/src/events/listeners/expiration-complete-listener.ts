@@ -6,7 +6,7 @@ import {
   NotFoundError,
   OrderStatus,
 } from '@valeriom91-org/common'
-import { Order } from '../models/order'
+import { Order } from '../../models/order'
 import { queueGroupName } from './queue-group-name'
 import { OrderCancelledPublisher } from '../publishers/order-cancelled-publisher'
 

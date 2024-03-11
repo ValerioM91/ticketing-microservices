@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
-import { Ticket } from '../../models/ticket'
-import { natsWrapper } from '../../nats-wrapper'
+import { Ticket } from '../../../models/ticket'
+import { natsWrapper } from '../../../nats-wrapper'
 import { ExpirationCompleteListener } from '../expiration-complete-listener'
-import { Order, OrderStatus } from '../../models/order'
+import { Order, OrderStatus } from '../../../models/order'
 import { ExpirationCompleteEvent } from '@valeriom91-org/common'
 
 const setup = async () => {
