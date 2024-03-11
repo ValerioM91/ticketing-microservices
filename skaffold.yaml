@@ -39,6 +39,14 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: docker.io/valeriom91/payments
+      context: payments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
     - image: docker.io/valeriom91/client
       context: client
       docker:
