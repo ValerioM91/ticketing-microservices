@@ -14,3 +14,5 @@ jobs:
           version: 8 # Optional: specify a pnpm version
 
       - run: cd payments && pnpm install && pnpm test:ci
+        env:
+          STRIPE_KEY: ${{ secrets.STRIPE_KEY }}
