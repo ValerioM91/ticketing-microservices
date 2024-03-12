@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
 const LandingPage = ({ currentUser, tickets }) => {
   const ticketList = tickets.map((ticket) => {
@@ -12,12 +12,12 @@ const LandingPage = ({ currentUser, tickets }) => {
           </Link>
         </td>
       </tr>
-    );
-  });
+    )
+  })
 
   return (
     <div>
-      <h1>Tickets</h1>
+      <h1>Tickets!</h1>
       <table className="table">
         <thead>
           <tr>
@@ -29,13 +29,13 @@ const LandingPage = ({ currentUser, tickets }) => {
         <tbody>{ticketList}</tbody>
       </table>
     </div>
-  );
-};
+  )
+}
 
 LandingPage.getInitialProps = async (context, client, currentUser) => {
-  const { data } = await client.get('/api/tickets');
+  const { data } = await client.get('/api/tickets')
 
-  return { tickets: data };
-};
+  return { tickets: data }
+}
 
-export default LandingPage;
+export default LandingPage
